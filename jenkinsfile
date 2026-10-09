@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('code clone') {
             steps {
+               git branch: 'main', url: 'https://github.com/vishuanjali/student-registration.git'
                 echo 'code clone successfull'
             }
         }
