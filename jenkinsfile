@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('code clone') {
+            steps {
+                echo 'code clone successfull'
+            }
+        }
+        stage('build') {
+            steps {
+                echo 'code build successfull'
+            }
+        }
+        stage('test') {
+            steps {
+                echo 'code test successfull'
+            }
+        }
+        stage('deploy') {
+            steps {
+                echo 'code deploy successfull'
+            }
+        }
+    }
+}
+
