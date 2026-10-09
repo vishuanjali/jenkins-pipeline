@@ -22,6 +22,11 @@ pipeline {
                 echo 'code deploy successfull'
             }
         }
+ stage('monitor') {
+            steps {
+                echo 'code monitor successfull'
+            }
+        }
     }
 }
 
