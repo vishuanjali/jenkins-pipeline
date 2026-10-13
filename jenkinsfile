@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('code clone') {
             steps {
-               git branch: 'main', url: 'https://github.com/cloud-blitz/EasyCRUD.git'
+               git branch: 'main', url: 'https://github.com/vishuanjali/EasyCRUD.git'
                 echo 'code clone successfull'
             }
         }
