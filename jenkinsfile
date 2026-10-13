@@ -30,7 +30,15 @@ pipeline {
                 echo 'Tests completed successfully'
             }
         }
-
+        
+ stage('sonar-scanner') {
+            steps {
+               withSonarQubeEnv(credentialsId: 'sonar-key') {
+                       mvn sonar:sonar
+                      }
+                echo 'application code scan successfull'
+            }
+        }
         stage('Deploy') {
             steps {
                 echo 'application deploy successfull'
