@@ -31,12 +31,16 @@ pipeline {
             }
         }
         
- stage('sonar-scanner') {
+      stage('SonarQube Analysis') {
             steps {
-               withSonarQubeEnv(credentialsId: 'sonar-key') {
-                       mvn sonar:sonar
-                      }
-                echo 'application code scan successfull'
+                withSonarQubeEnv('sonar-server') {
+                    sh '''
+                        cd backend
+                    mvn org.sonarsource.scanner.maven:sonar-maven-plugin:5.1.0.4751:sonar \
+                  -Dsonar.projectKey=student-registration-backend \
+                  -Dsonar.projectName=student-registration-backend
+                    '''
+                }
             }
         }
         stage('Deploy') {
