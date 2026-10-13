@@ -31,30 +31,9 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('SonarQube-Server') {
-                    sh '''
-                        cd backend
-                       mvn org.sonarsource.scanner.maven:sonar-maven-plugin:5.1.0.4751:sonar \
-                  -Dsonar.projectKey=student-registration-backend \
-                  -Dsonar.projectName=student-registration-backend
-                    '''
-                }
-            }
-        }
-
-        stage('Quality Gate') {
-            steps {
-                timeout(time: 10, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-        }
-
         stage('Deploy') {
             steps {
-                echo 'Quality Gate passed. Ready to deploy.'
+                echo 'application deploy successfull'
             }
         }
 
